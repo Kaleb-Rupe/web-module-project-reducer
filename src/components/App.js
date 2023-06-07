@@ -1,7 +1,7 @@
 import React from "react";
 import { initialState, reducer } from "../reducers";
 import { useReducer } from "react";
-import { applyNumber } from "../actions";
+import { applyNumber, changeOperation, clearDisplay } from "../actions";
 
 import "./App.css";
 
@@ -13,6 +13,14 @@ function App() {
 
   const handleNumberClick = (number) => {
     dispatch(applyNumber(number));
+  };
+
+  const handleOperationClick = (operator) => {
+    dispatch(changeOperation(operator));
+  };
+
+  const clearDisplayClick = (clear) => {
+    dispatch(clearDisplay(clear));
   };
 
   return (
@@ -44,31 +52,67 @@ function App() {
             </div>
 
             <div className="row">
-              <CalcButton value={1} onClick={() => handleNumberClick(1)} />
-              <CalcButton value={2} onClick={() => handleNumberClick(2)} />
-              <CalcButton value={3} onClick={() => handleNumberClick(3)} />
+              <CalcButton
+                value={1}
+                onClick={(evt) => handleNumberClick(evt.target.value)}
+              />
+              <CalcButton
+                value={2}
+                onClick={(evt) => handleNumberClick(evt.target.value)}
+              />
+              <CalcButton
+                value={3}
+                onClick={(evt) => handleNumberClick(evt.target.value)}
+              />
             </div>
 
             <div className="row">
-              <CalcButton value={4} onClick={() => handleNumberClick(4)} />
-              <CalcButton value={5} onClick={() => handleNumberClick(5)} />
-              <CalcButton value={6} onClick={() => handleNumberClick(6)} />
+              <CalcButton
+                value={4}
+                onClick={(evt) => handleNumberClick(evt.target.value)}
+              />
+              <CalcButton
+                value={5}
+                onClick={(evt) => handleNumberClick(evt.target.value)}
+              />
+              <CalcButton
+                value={6}
+                onClick={(evt) => handleNumberClick(evt.target.value)}
+              />
             </div>
 
             <div className="row">
-              <CalcButton value={7} onClick={() => handleNumberClick(7)} />
-              <CalcButton value={8} onClick={() => handleNumberClick(8)} />
-              <CalcButton value={9} onClick={() => handleNumberClick(9)} />
+              <CalcButton
+                value={7}
+                onClick={(evt) => handleNumberClick(evt.target.value)}
+              />
+              <CalcButton
+                value={8}
+                onClick={(evt) => handleNumberClick(evt.target.value)}
+              />
+              <CalcButton
+                value={9}
+                onClick={(evt) => handleNumberClick(evt.target.value)}
+              />
             </div>
 
             <div className="row">
-              <CalcButton value={"+"} />
-              <CalcButton value={"*"} />
-              <CalcButton value={"-"} />
+              <CalcButton
+                value={"+"}
+                onClick={(evt) => handleOperationClick(evt.target.value)}
+              />
+              <CalcButton
+                value={"*"}
+                onClick={(evt) => handleOperationClick(evt.target.value)}
+              />
+              <CalcButton
+                value={"-"}
+                onClick={(evt) => handleOperationClick(evt.target.value)}
+              />
             </div>
 
             <div className="row ce_button">
-              <CalcButton value={"CE"} />
+              <CalcButton value={"CE"} onClick={() => clearDisplayClick()} />
             </div>
           </form>
         </div>
